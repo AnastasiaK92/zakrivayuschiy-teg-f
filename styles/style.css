@@ -13,4 +13,354 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--font-press-start);
+  font-variation-settings: "wght" var(--font-press-start-normal);
+  background-image: var(--gradient-primary);
+  background-attachment: fixed;
+  background-size: cover;
+}
+/*Резиновая ширина*/
+.flex-width {
+  width: var(--flex-width);
+}
+
+.header_title {
+  display: flex;
+  gap: 19px;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid rgba(0, 0, 0, 1);
+  background-color: rgba(255, 255, 255, 1);
+  margin: 100px auto;
+  padding: var(--padding-vertical) var(--padding-horizontal);
+}
+
+.title {
+  font-size: var(--headingPrimary);
+}
+
+.subtitle {
+  text-transform: uppercase;
+  font-size: var(--subheading);
+}
+/*Основной блок*/
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  background-color: rgba(255, 255, 255, 1);
+  margin: 0 auto;
+}
+
+.section {
+  border: 2px solid rgba(0, 0, 0, 1);
+}
+
+.section_title {
+  border-block-end: 2px solid rgba(0, 0, 0, 1);
+  font-size: var(--sectionTitleFontSize);
+  font-family: var(--font-inter);
+  padding: 5px 50px 4px 10px;
+  letter-spacing: 0;
+  font-feature-settings: "wght" 715;
+}
+
+.section_text {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  border-block-start: 2px solid rgba(0, 0, 0, 1);
+  padding: 20px 32px 22px 26px;
+  font-size: var(--paragraphFontSize);
+  line-height: 1.17;
+  font-family: var(--font-inter);
+  word-spacing: 3px;
+}
+
+.image {
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-media {
+  position: relative;
+  width: 100%;
+  max-width: 696px;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.label {
+  position: absolute;
+  top: 27px;
+  right: 25px;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 14px;
+  line-height: 1;
+  mix-blend-mode: hard-light;
+  text-transform: uppercase;
+  text-shadow: 1px 0 0 var(--label-text-stroke-color),
+    0 1px 0 var(--label-text-stroke-color),
+    -1px 0 0 var(--label-text-stroke-color),
+    0 -1px 0 var(--label-text-stroke-color); /*Пересмотреть значение по сторонам*/
+}
+
+@supports (text-stroke: 1px var(--label-text-stroke-color)) or
+  (-webkit-text-stroke: 1px var(--label-text-stroke-color)) {
+  .label {
+    -webkit-text-stroke: 1px var(--label-text-stroke-color);
+    text-stroke: 1px var(--label-text-stroke-color);
+    text-shadow: none;
+  }
+}
+
+.button {
+  background-color: transparent;
+  cursor: pointer;
+}
+/*Кнопка like*/
+.button__text {
+  position: relative;
+  color: #fff;
+  mix-blend-mode: difference;
+}
+
+.social-action {
+  display: flex;
+  justify-content: flex-end;
+  padding-block-end: 25px;
+  padding-inline-end: 25px;
+}
+
+.card__like-button {
+  padding-inline-end: 31px;
+  padding-inline-start: 31px;
+  transition: box-shadow 0.3s ease;
+  position: relative;
+}
+/*Кнопка сохранения*/
+.save-button {
+  border: 2px solid rgba(0, 0, 0, 1);
+  padding: 10px 20px 17px 15px;
+  font-size: 0 /*убирает пробел между svg и span*/;
+  margin-block-start: 4px;
+  transition: box-shadow 0.3s ease;
+  position: relative;
+  color: #fff;
+}
+
+.button_save_text {
+  font-size: 14px;
+  margin-inline-start: 5px;
+}
+
+.button-container {
+  text-align: center;
+}
+
+.image_floppy {
+  margin-inline-start: 3px;
+  height: 21px;
+  width: 21px;
+  mix-blend-mode: difference;
+}
+/*кнопка сердце*/
+.card__icon-button {
+  outline: none;
+  border: none;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0);
+  transition: box-shadow 0.3s ease;
+}
+
+.sparks {
+  opacity: 0;
+}
+/*эффекты*/
+.card__like-button:focus {
+  outline: none;
+  box-shadow: 2px 2px 0px var(--color-mix);
+}
+
+.card__like-button:not(:focus) {
+  box-shadow: none;
+}
+
+.save-button:focus {
+  outline: none;
+  box-shadow: 2px 2px 0px var(--color-mix);
+}
+
+.save-button:not(:focus) {
+  box-shadow: none;
+}
+
+.button_close:focus {
+  outline: none;
+  box-shadow: 2px 2px 0px var(--color-mix);
+}
+
+.button_close:not(:focus) {
+  box-shadow: none;
+}
+
+.card__like-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-mix);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease-in-out;
+}
+
+.card__like-button:hover::before {
+  transform: scaleX(1);
+}
+
+.save-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-mix);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease-in-out;
+}
+
+.save-button:hover::before {
+  transform: scaleX(1);
+}
+
+.button_close::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-mix);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease-in-out;
+}
+
+.button_close:hover::before {
+  transform: scaleX(1);
+}
+
+.button_heart:focus {
+  outline: none;
+}
+
+.button_heart:focus-visible {
+  box-shadow: 0 0 0 2px var(--color-mix);
+}
+/*Фильтры*/
+.image_saturate {
+  filter: saturate(0.3);
+}
+
+.image_filter_neon {
+  filter: hue-rotate(-5deg) saturate(2.2) brightness(1.1) contrast(1.05);
+}
+
+.image_hye {
+  filter: hue-rotate(45deg);
+}
+
+.image_invert {
+  filter: invert(0.8);
+}
+
+.image_sepia {
+  filter: sepia(0.8);
+}
+
+.image_blur {
+  filter: blur(5px);
+}
+
+.image_filter_dreamy {
+  filter: hue-rotate(80deg) blur(2px) contrast(0.5);
+}
+/*Диалоговое окно*/
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+dialog {
+  max-width: 353px;
+  width: 100%;
+}
+
+.title_dialog {
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+.button_ok {
+  display: flex;
+  gap: 20px;
+  padding: 30px 30px 30px 30px;
+  transition: box-shadow 0.3s ease;
+}
+
+.image_ok {
+  width: 39px;
+  height: 39px;
+  flex: none;
+}
+
+.button_close {
+  display: block;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  padding: 12.5px 132.5px;
+  font-size: 14px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+@media (width <= 375px) {
+  .section_text {
+    padding: 22px 36px 23px 25px;
+  }
+
+  .save-button {
+    display: flex;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 14px 13px 11px;
+  }
+
+  .image_floppy {
+    width: 28px;
+    height: 28px;
+  }
+
+  .button_ok {
+    gap: 20px;
+    padding: 30px 40px 30px 40px;
+  }
+
+  .button_close {
+    padding: 12.5px 116.5px;
+  }
+
+  dialog {
+    max-width: 341px;
+  }
 }
