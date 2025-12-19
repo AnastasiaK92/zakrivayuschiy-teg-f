@@ -48,12 +48,12 @@
   display: flex;
   flex-direction: column;
   gap: 50px;
-  background-color: rgba(255, 255, 255, 1);
   margin: 0 auto;
 }
 
 .section {
   border: 2px solid rgba(0, 0, 0, 1);
+  background-color: rgba(255, 255, 255, 1);
 }
 
 .section_title {
@@ -62,7 +62,7 @@
   font-family: var(--font-inter);
   padding: 5px 50px 4px 10px;
   letter-spacing: 0;
-  font-feature-settings: "wght" 715;
+  font-variation-settings: "wght" var(--font-press-start-bold);
 }
 
 .section_text {
@@ -70,11 +70,10 @@
   flex-direction: column;
   gap: 25px;
   border-block-start: 2px solid rgba(0, 0, 0, 1);
-  padding: 20px 32px 22px 26px;
+  padding: 26px 61px 24px 24px;
   font-size: var(--paragraphFontSize);
-  line-height: 1.17;
+  line-height: 1.167;
   font-family: var(--font-inter);
-  word-spacing: 3px;
 }
 
 .image {
@@ -119,7 +118,9 @@
 .button {
   background-color: transparent;
   cursor: pointer;
+  transition: box-shadow 0.3s ease;
 }
+
 /*Кнопка like*/
 .button__text {
   position: relative;
@@ -127,37 +128,44 @@
   mix-blend-mode: difference;
 }
 
+.button__text-like {
+  text-transform: capitalize;
+  line-height: 0.9;
+  letter-spacing: 0;
+}
+
 .social-action {
   display: flex;
   justify-content: flex-end;
   padding-block-end: 25px;
   padding-inline-end: 25px;
+  gap: 7px;
 }
 
 .card__like-button {
   padding-inline-end: 31px;
   padding-inline-start: 31px;
-  transition: box-shadow 0.3s ease;
   position: relative;
 }
 /*Кнопка сохранения*/
 .save-button {
   border: 2px solid rgba(0, 0, 0, 1);
-  padding: 10px 20px 17px 15px;
+  padding: 10px 18px 17px 15px;
   font-size: 0 /*убирает пробел между svg и span*/;
-  margin-block-start: 4px;
-  transition: box-shadow 0.3s ease;
+  margin-block-start: 1px;
   position: relative;
   color: #fff;
+  background-color: #fff;
 }
 
 .button_save_text {
   font-size: 14px;
-  margin-inline-start: 5px;
+  margin-inline-start: 7px;
 }
 
 .button-container {
   text-align: center;
+  margin-block-end: 100px;
 }
 
 .image_floppy {
@@ -171,41 +179,24 @@
   outline: none;
   border: none;
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0);
-  transition: box-shadow 0.3s ease;
+  padding-inline-start: 0;
+  padding-inline-end: 0;
 }
 
 .sparks {
   opacity: 0;
 }
 /*эффекты*/
-.card__like-button:focus {
+.button-all-states:focus {
   outline: none;
   box-shadow: 2px 2px 0px var(--color-mix);
 }
 
-.card__like-button:not(:focus) {
+.button-all-states:not(:focus) {
   box-shadow: none;
 }
 
-.save-button:focus {
-  outline: none;
-  box-shadow: 2px 2px 0px var(--color-mix);
-}
-
-.save-button:not(:focus) {
-  box-shadow: none;
-}
-
-.button_close:focus {
-  outline: none;
-  box-shadow: 2px 2px 0px var(--color-mix);
-}
-
-.button_close:not(:focus) {
-  box-shadow: none;
-}
-
-.card__like-button::before {
+.button-all-states::before {
   content: "";
   position: absolute;
   top: 0;
@@ -218,50 +209,16 @@
   transition: transform 0.5s ease-in-out;
 }
 
-.card__like-button:hover::before {
+.button-all-states:hover::before {
   transform: scaleX(1);
 }
 
-.save-button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--color-mix);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.5s ease-in-out;
-}
-
-.save-button:hover::before {
-  transform: scaleX(1);
-}
-
-.button_close::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--color-mix);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.5s ease-in-out;
-}
-
-.button_close:hover::before {
-  transform: scaleX(1);
-}
-
-.button_heart:focus {
+.card__icon-button:focus {
   outline: none;
 }
 
-.button_heart:focus-visible {
-  box-shadow: 0 0 0 2px var(--color-mix);
+.card__icon-button:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--color-mix);
 }
 /*Фильтры*/
 .image_saturate {
@@ -296,9 +253,10 @@ dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-dialog {
+dialog[open] {
   max-width: 353px;
-  width: 100%;
+  padding: 0;
+  margin-block-end: 384px;
 }
 
 .title_dialog {
@@ -310,8 +268,10 @@ dialog {
 
 .button_ok {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 20px;
-  padding: 30px 30px 30px 30px;
+  padding: 28px 30px 29px 27px;
   transition: box-shadow 0.3s ease;
 }
 
@@ -325,7 +285,8 @@ dialog {
   display: block;
   margin-inline-start: auto;
   margin-inline-end: auto;
-  padding: 12.5px 132.5px;
+  margin-block-end: 29px;
+  padding: 9.5px 130.5px;
   font-size: 14px;
   text-transform: uppercase;
   position: relative;
@@ -333,7 +294,19 @@ dialog {
 
 @media (width <= 375px) {
   .section_text {
-    padding: 22px 36px 23px 25px;
+    padding: 26px 57px 23px 25px;
+  }
+
+  .section_title {
+    padding: 6px 50px 4px 10px;
+  }
+
+  .main section:last-of-type .section_text {
+    padding: 26px 44px 24px 25px;
+  }
+
+  .main section:last-of-type .section_title {
+    padding: 7px 1px 3px 11px;
   }
 
   .save-button {
@@ -353,14 +326,18 @@ dialog {
 
   .button_ok {
     gap: 20px;
-    padding: 30px 40px 30px 40px;
+    padding: 27px 23px 7px 37px;
   }
 
   .button_close {
-    padding: 12.5px 116.5px;
+    padding: 10.5px 114.5px;
+    margin-bottom: 25px;
+    margin-top: 23px;
   }
 
-  dialog {
+  dialog[open] {
+    margin-block-end: 242px;
+    padding: 0;
     max-width: 341px;
   }
 }
