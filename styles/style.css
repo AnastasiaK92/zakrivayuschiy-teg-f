@@ -301,11 +301,11 @@ dialog[open] {
     padding: 6px 50px 4px 10px;
   }
 
-  .main section:last-of-type .section_text {
+  .special-paragraphs-layout  {
     padding: 26px 44px 24px 25px;
   }
 
-  .main section:last-of-type .section_title {
+  .unique-title-style {
     padding: 7px 1px 3px 11px;
   }
 
